@@ -27,6 +27,8 @@ class BeerControllerIT {
     BeerRepository beerRepository;
 
     @Test
+    @Transactional
+    @Rollback
     void saveNewBeerTest() {
 
             BeerDTO beerDTO = BeerDTO.builder()
