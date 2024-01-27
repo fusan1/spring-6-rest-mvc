@@ -59,7 +59,7 @@ class BeerControllerIT {
         Beer beer = beerRepository.findAll().get(0);
 
         Map<String, Object> beerMap = new HashMap<>();
-        beerMap.put("beerName","New Beer123456123456123456123456123456123456123456123456123456123456");
+        beerMap.put("beerName","New Beer123456123456123456123456123456123456123456123456123456123456456123456456123456456123456456123456456123456");
 
         mockMvc.perform(patch(BeerController.BEER_PATH_ID, beer.getId())
                         .contentType(MediaType.APPLICATION_JSON)
