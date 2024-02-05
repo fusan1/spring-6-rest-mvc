@@ -4,7 +4,6 @@ import guru.springframework.spring6restmvc.mappers.BeerMapper;
 import guru.springframework.spring6restmvc.model.BeerDTO;
 import guru.springframework.spring6restmvc.repositories.BeerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -24,7 +23,7 @@ public class BeerServiceJPA implements BeerService {
 
     private final BeerMapper beerMapper;
     @Override
-    public List<BeerDTO> listBeers() {
+    public List<BeerDTO> listBeers(String beerName) {
         return beerRepository.findAll()
                 .stream()
                 .map(beerMapper::beerToBeerDto)
