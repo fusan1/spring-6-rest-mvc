@@ -66,7 +66,7 @@ public class BeerServiceJPA implements BeerService {
             queryPageNumber = DEFAULT_PAGE;
         }
 
-        if (pageSize == 0 ){
+        if (pageSize == null){
             queryPageSize = DEFAULT_PAGE_SIZE;
         }else {
             if(pageSize > 1000){

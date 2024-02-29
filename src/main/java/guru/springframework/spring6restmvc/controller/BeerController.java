@@ -77,6 +77,10 @@ public class BeerController {
     }
 
 
+
+
+
+
     @GetMapping(value = BEER_PATH_ID)
     public BeerDTO getBeerById(@PathVariable("beerId") UUID id){
         log.debug("get beer by id -- beer controller");
