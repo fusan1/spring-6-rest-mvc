@@ -52,10 +52,16 @@ class BeerControllerTest {
     @Captor
     ArgumentCaptor<BeerDTO> beerArgumentCaptor;
 
+    public static final String USERNAME = "user1";
+    public static final String PASSWORD = "password";
+
+
     @BeforeEach
     void setUp() {
         beerServiceImpl = new BeerServiceImpl();
     }
+
+
 
     @Test
     void testCreateBeerNullBeerName() throws Exception {
@@ -64,7 +70,7 @@ class BeerControllerTest {
         given(beerService.saveNewBeer(any(BeerDTO.class))).willReturn((beerServiceImpl.listBeers(null, null, false,1,25).getContent().get(0)));
 
         MvcResult mvcResult = mockMvc.perform(post(BeerController.BEER_PATH)
-                        .with(httpBasic("user1", "password"))
+                        .with(httpBasic(USERNAME, PASSWORD))
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(beerDTO)))
@@ -148,7 +154,7 @@ class BeerControllerTest {
         given(beerService.listBeers(any(), any(), any(), any(), any())).willReturn(beerServiceImpl.listBeers(null, null, false,null,null));
 
         mockMvc.perform(get(BeerController.BEER_PATH)
-                        .with(httpBasic("user1","123456"))
+                        .with(httpBasic(USERNAME,PASSWORD))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
